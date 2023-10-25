@@ -37,17 +37,18 @@ def calculate_costBenefit(product):
     return product["rating"] / product["cost"]
 
 def rank_products(eshop):
-    ranked_products = {}  
+    ranked_products = {}
 
     for pr_name, pr_data in eshop.items():
-        mb = calculate_marginBenefit(pr_data)
-        cb = calculate_costBenefit(pr_data)
-        ranked_products[pr_name] = {"MB": mb, "CB": cb}  
+        mb = calculate_marginBenefit(pr_data)  
+        cb = calculate_costBenefit(pr_data)  
+        ranked_products[pr_name] = {"MB": mb, "CB": cb}
 
     sorted_products = dict(sorted(ranked_products.items(), key=lambda item: (item[1]["MB"], item[1]["CB"]), reverse=True))
     return sorted_products
 
-sorted_products_X = rank_products(eshop_X)
+
+sorted_products_X = rank_products(eshop_Y)
 print("Sort Product:")
 print(sorted_products_X)
 
